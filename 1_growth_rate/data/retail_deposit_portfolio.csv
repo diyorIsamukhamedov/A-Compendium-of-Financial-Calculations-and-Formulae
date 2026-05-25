@@ -1,0 +1,7 @@
+date,indicator,value,unit,currency
+2024-01-01,total_portfolio,1250,UZS bn,UZS
+2024-01-01,fx_component,320,UZS bn,UZS
+2024-01-01,sum_component,930,UZS bn,UZS
+2025-01-01,total_portfolio,1475,UZS bn,UZS
+2025-01-01,fx_component,290,UZS bn,UZS
+2025-01-01,sum_component,1185,UZS bn,UZS
