@@ -184,5 +184,5 @@ Python (NumPy, Pandas, Matplotlib, Jupyter), PostgreSQL, Microsoft Excel, DBeave
 The bank's total retail deposit portfolio demonstrated positive dynamics (+18%); however, growth was driven exclusively by the sum-denominated component (+27.42%) against a contraction of the FX component (-9.38%). A structural shift towards portfolio de-dollarisation has been recorded: the share of FX deposits declined by 5.94 percentage points. Such dynamics are consistent with the current stage of banking sector reform in Uzbekistan and align with the policy of the Central Bank of the Republic of Uzbekistan aimed at enhancing the attractiveness of sum-denominated savings (through interest rates, deposit insurance instruments, and currency liberalisation).
 
 ## Автор / Author
-
+ 
 [Diyor Isamuxamedov](https://github.com/diyorIsamukhamedov/)
