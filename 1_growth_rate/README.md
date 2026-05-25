@@ -1,148 +1,156 @@
 # Growth Rate
 
-> **Disclaimer.** All datasets, financial figures, and business cases used in this repository are **fully synthetic** and created exclusively for educational purposes. They do not represent any real organisation, commercial bank, or actual market data. Any resemblance to real entities or transactions is coincidental.
+Исследование финансовых вычислений и количественных формул, реализованное на Python, PostgreSQL, Microsoft Excel и прикладной математике. Текущая редакция посвящена показателю темпа прироста и построена на едином цикле для каждой темы: рукописный конспект, расшифровка теории в Markdown, практическая задача с пошаговым решением, Python-класс, Jupyter-ноутбук, эквивалент на SQL в нормализованной схеме PostgreSQL и Excel-модель для кросс-валидации.
 
----
- 
-## Overview
- 
-This repository contains a structured study of financial calculations and quantitative formulae, implemented through `Python`, `PostgreSQL`, `Microsoft Excel`, and applied mathematics.
+A study of financial calculations and quantitative formulae, implemented through Python, PostgreSQL, Microsoft Excel, and applied mathematics. The current edition is dedicated to the Growth Rate indicator and follows a single cycle for each topic: handwritten notes, transcribed theory in Markdown, a practical task with a step-by-step solution, a Python class, a Jupyter notebook, equivalent SQL on a normalised schema in PostgreSQL, and an Excel model for cross-validation.
 
-The current edition is dedicated to the **Growth Rate** indicator. Each topic in the repository follows a uniform methodological cycle:
- 
-1. Theoretical foundations: definition, economic meaning, formula derivation.
-2. Practical task with a step-by-step solution.
-3. Reusable `Python` implementation of the formula.
-4. Statistical analysis and visualisation in a `Jupyter Notebook`.
-5. `SQL`-based implementation on a normalised schema in `PostgreSQL`.
-6. `Excel` model replicating the same calculation for cross-validation.
-7. Original handwritten notes preserved as scanned images.
-All theory notes and task solutions inside the repository are provided in both English and Russian in parallel.
- 
----
- 
-## Formula
- 
+Все данные и цифры в репозитории синтетические и созданы только в учебных целях, ориентированных на реальную практику в сфере FinTech. Теоретические конспекты и решения задач представлены параллельно на английском и русском языках.
+
+All datasets and figures in the repository are synthetic and created for real-world FinTech oriented practice purposes only. Theory notes and task solutions are provided in both English and Russian in parallel.
+
+## Формула / Formula
+
 ```
-ΔP = ((V₁ − V₀) / V₀) × 100%
+ΔP = ((V₁ - V₀) / V₀) × 100%
 ```
- 
-Where:
-* `V₀` is the value of the indicator in the base period.
-* `V₁` is the value of the indicator in the reporting period.
-* `ΔP` is the relative growth rate, expressed in percent.
+
+где:
+
+V₀ - значение показателя в базисном периоде;
+V₁ - значение показателя в отчётном периоде;
+ΔP - темп прироста, %.
+
+where:
+
+V₀ - value of the indicator in the base period;
+V₁ - value of the indicator in the reporting period;
+ΔP - growth rate, %.
+
+Показатель отражает динамику изучаемой величины: положительное значение свидетельствует о росте, отрицательное - о сокращении. В отличие от абсолютного прироста (выраженного в денежных или натуральных единицах), темп прироста позволяет сопоставлять динамику разномасштабных показателей и проводить сравнительный анализ между периодами, организациями или сегментами рынка.
+
 The indicator reflects the dynamics of the value under study. A positive value indicates growth, a negative one indicates a decline. Unlike absolute increment (expressed in monetary or natural units), the growth rate allows for comparing the dynamics of indicators of different scales and conducting comparative analysis between periods, organisations, or market segments.
- 
----
- 
-## Project Structure
- 
+
+## Структура проекта / Project Structure
+
 ```
+├── LICENCE
 ├── requirements.txt
 ├── .gitignore
 │
 └── 1_growth_rate/
-    ├── theory/                 Theoretical foundations (.md, RU + EN)
+    ├── 1_theory/                 Теория / Theory (RU + EN)
     │   └── growth_rate.md
     │
-    ├── tasks/                  Tasks with step-by-step solutions (.md, RU + EN)
+    ├── 2_tasks/                  Задачи / Tasks (RU + EN)
     │   └── task_01_deposit_portfolio.md
     │
-    ├── python/
-    │   └── formulas/           Reusable Python implementation of the formula
-    │       └── growth_rate.py
+    ├── 3_python/
+    │   └── formulas/             Реализация на Python / Python implementation
+    │       ├── growth_rate.py
+    │       └── structural_shift.py
     │
-    ├── notebooks/              Jupyter notebook with final statistics
-    │   │                       (imports functions from python/formulas/)
-    │   └── 01_growth_rate_analysis.ipynb
+    ├── 4_notebooks/              Jupyter-ноутбук / Jupyter notebook
+    │   └── growth_rate_analysis.ipynb
     │
-    ├── PostgreSQL/
-    │   ├── DDL/                Schema and table creation scripts
-    │   └── DML/                Analytical SQL queries
+    ├── 5_PostgreSQL/
+    │   ├── DDL/                  Создание схемы / Schema scripts
+    │   └── DML/                  Аналитические запросы / Analytical queries
     │
-    ├── excel/                  Excel model for cross-validation
+    ├── excel/                    Excel-модель / Excel model
     │   └── growth_rate.xlsx
     │
-    ├── data/                   Synthetic datasets in CSV
+    ├── data/                     Синтетические данные / Synthetic datasets (CSV)
     │
-    ├── handwritten/            Scanned original handwritten notes
-    │   └── growth_rate_page_01.jpg
+    ├── handwritten/              Рукописные конспекты / Handwritten notes
     │
+    └── docs/                     ERD-диаграммы и доп. материалы / ERD diagrams and supplementary materials
     ├── README.md
-    └── docs/                   ERD diagrams, screenshots, supplementary materials
 ```
- 
----
- 
-## How to Run
- 
-### 1. Clone the Repository
- 
+
+## Как запустить / How to Run
+
+Склонировать репозиторий:
+
+Clone the repository:
+
 ```bash
 git clone https://github.com/diyorIsamukhamedov/1_growth-rate.git
 cd 1_growth-rate
 ```
- 
-### 2. Set Up Python Environment
- 
+
+Настроить виртуальное окружение Python:
+
+Set up the Python environment:
+
 ```bash
 python -m venv venv
 source venv/bin/activate          # Linux / macOS
 venv\Scripts\activate             # Windows
 pip install -r requirements.txt
 ```
- 
-### 3. Initialise the PostgreSQL Database
- 
-Run the DDL scripts in your SQL IDE (DBeaver or psql):
- 
-```bash
-\i 1_growth_rate/PostgreSQL/DDL/create_schema.sql
+Если venv не запускается, то применить:
 ```
- 
-### 4. Open the Notebook
- 
+pip3 install ipykernel notebook pandas # Linux / macOS
+python3 -m ipykernel install --user --name=venv --display-name "your_venv_name"
+```
+
+Инициализировать схему PostgreSQL в DBeaver или psql:
+
+Initialise the PostgreSQL schema in DBeaver or psql:
+
+```bash
+\i 1_growth_rate/5_PostgreSQL/DDL/create_schema.sql
+```
+
+Открыть ноутбук:
+
+Open the notebook:
+
 ```bash
 jupyter notebook
 ```
- 
-Open `1_growth_rate/notebooks/01_growth_rate_analysis.ipynb` to view the final statistical analysis.
- 
----
- 
-## Example: Multi-Tool Implementation
- 
-**Python implementation** in `1_growth_rate/python/formulas/growth_rate.py`:
- 
+
+Затем открыть `1_growth_rate/4_notebooks/growth_rate_analysis.ipynb`.
+
+Then open `1_growth_rate/4_notebooks/growth_rate_analysis.ipynb`.
+
+## Пример / Example
+
+Реализация на Python в `1_growth_rate/3_python/formulas/growth_rate.py`:
+
+Python implementation in `1_growth_rate/3_python/formulas/growth_rate.py`:
+
 ```python
-def growth_rate(v0: float, v1: float) -> float:
-    """
-    Calculate the relative growth rate between two periods.
- 
-    :param v0: value of the indicator in the base period
-    :param v1: value of the indicator in the reporting period
-    :return: growth rate, %
-    """
-    if v0 == 0:
-        raise ValueError("Base-period value cannot be zero.")
-    return ((v1 - v0) / v0) * 100
+class GrowthRate:
+    """Represents a growth rate calculation between two periods."""
+
+    def __init__(self, v0: float, v1: float, name: str) -> None:
+        if v0 == 0:
+            raise ValueError("Base-period value cannot be zero.")
+
+        self.v0 = v0
+        self.v1 = v1
+        self.name = name
+
+    def percentage(self) -> float:
+        return ((self.v1 - self.v0) / self.v0) * 100
 ```
- 
-**Notebook usage** in `1_growth_rate/notebooks/01_growth_rate_analysis.ipynb`:
- 
+
+Использование:
+
+Usage:
+
 ```python
-from python.formulas.growth_rate import growth_rate
- 
-# Retail deposit portfolio (synthetic data, UZS bn)
-result = growth_rate(v0=1250, v1=1475)
-print(f"Total portfolio growth rate: {result:.2f}%")
-# Output: Total portfolio growth rate: 18.00%
+total = GrowthRate(v0=1250, v1=1475, name="Total Portfolio")
+print(f"{total.name}: {total.percentage():+.2f}%")
+# Output: Total Portfolio: +18.00%
 ```
- 
-**SQL implementation** in `1_growth_rate/PostgreSQL/DML/growth_rate.sql`:
- 
+
+Эквивалент на SQL в `1_growth_rate/5_PostgreSQL/DML/growth_rate.sql`:
+
+SQL equivalent in `1_growth_rate/5_PostgreSQL/DML/growth_rate.sql`:
+
 ```sql
--- Compute period-over-period growth rate for each indicator
 WITH periods AS (
     SELECT
         indicator_name,
@@ -159,37 +167,22 @@ SELECT
 FROM periods
 WHERE v0 IS NOT NULL AND v0 <> 0;
 ```
- 
+
+## Рукописные конспекты / Handwritten Notes
+
+Оригинальные рукописные конспекты хранятся в `1_growth_rate/handwritten/` в виде отсканированных изображений. Они отражают этап ручной проработки темы до её перевода в Markdown и в режим имплементации в кодовом (цифровом) виде.
+
+Original handwritten notes are kept in `1_growth_rate/handwritten/` as scanned images. They reflect the manual draft stage before transcription into Markdown.
+
+## Технологии / Technologies
+
+Python (NumPy, Pandas, Matplotlib, Jupyter), PostgreSQL, Microsoft Excel, DBeaver, Git/GitHub, Markdown.
 ---
- 
-## Handwritten Notes
- 
-Original handwritten notes are preserved in `1_growth_rate/handwritten/` as scanned images. These represent the initial draft stage of each topic before transcription into the structured digital format presented above. They are included as supplementary material to document the full learning process and may be useful for visualising step-by-step manual derivations alongside the formal Markdown notes in `theory/` and `tasks/`.
- 
----
- 
-## Technologies Used
- 
-* `Python` (NumPy, Pandas, Matplotlib, Jupyter) for formula implementation and statistical analysis.
-* `PostgreSQL` for database design and analytical SQL queries.
-* `Microsoft Excel` for financial modelling and cross-validation of calculations.
-* `DBeaver` as the SQL IDE and ERD generator.
-* `Git` and `GitHub` for version control and public documentation.
-* `Markdown` for bilingual theory notes and task solutions.
----
- 
-## Key Outcomes
- 
-| Objective | Approach | Outcome |
-|---|---|---|
-| Build a personal reference of financial formulas | Document each formula with theory, task, and solution in bilingual Markdown | Structured, searchable archive |
-| Develop applied analytical skills in the FinTech sector | Solve realistic FinTech-sector tasks step-by-step on synthetic data | Strengthened applied competencies |
-| Practise multi-tool implementation of the same calculation | Reproduce each formula in Python, SQL, and Excel | Results cross-validated across three environments |
-| Preserve the full learning process | Store original handwritten notes alongside digital materials | Transparent record from manual draft to final implementation |
-| Maintain a professional public portfolio | Clean code, documentation, and reproducible structure | Public-facing portfolio for recruiters |
- 
----
- 
-## Author
- 
-Developed by: [Diyor Isamuxamedov](https://github.com/diyorIsamukhamedov/)
+Вывод / Conclusion
+Совокупный розничный депозитный портфель банка продемонстрировал положительную динамику (+18%), однако рост обеспечен исключительно сумовой составляющей (+27,42%) на фоне сокращения валютной части (-9,38%). Зафиксирован структурный сдвиг в сторону девалютизации (десолларизации) портфеля: доля валютных депозитов снизилась на 5,94 п.п. Подобная динамика характерна для текущего этапа реформ банковского сектора Узбекистана и согласуется с политикой Центрального банка РУз, направленной на повышение привлекательности сумовых сбережений (через ставки, инструменты страхования вкладов и валютную либерализацию).
+
+The bank's total retail deposit portfolio demonstrated positive dynamics (+18%); however, growth was driven exclusively by the sum-denominated component (+27.42%) against a contraction of the FX component (-9.38%). A structural shift towards portfolio de-dollarisation has been recorded: the share of FX deposits declined by 5.94 percentage points. Such dynamics are consistent with the current stage of banking sector reform in Uzbekistan and align with the policy of the Central Bank of the Republic of Uzbekistan aimed at enhancing the attractiveness of sum-denominated savings (through interest rates, deposit insurance instruments, and currency liberalisation).
+
+## Автор / Author
+
+[Diyor Isamuxamedov](https://github.com/diyorIsamukhamedov/)
