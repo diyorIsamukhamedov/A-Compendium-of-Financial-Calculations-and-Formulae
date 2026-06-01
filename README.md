@@ -43,6 +43,7 @@ Theory notes and tasks are provided in both English and Russian.
 - **Python** (pandas, matplotlib, Jupyter Notebook)
 - **PostgreSQL** (with DBeaver)
 - **Microsoft Excel**
+- **Machine learning** (scikit-learn) - models and algorithms
 - **Git and GitHub**
 - **Markdown**
 
@@ -91,6 +92,7 @@ Developed by [Diyor Isamukhamedov](https://github.com/diyorIsamukhamedov/)
 - **Python** (pandas, matplotlib, Jupyter Notebook)
 - **PostgreSQL** (через DBeaver)
 - **Microsoft Excel**
+- **Машинное обучение** (scikit-learn) - модели и алгоритмы
 - **Git и GitHub**
 - **Markdown**
 
