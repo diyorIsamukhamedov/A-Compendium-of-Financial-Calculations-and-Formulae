@@ -53,3 +53,5 @@ logs/
 
 # Coverage and testing
 .pytest_cache/
+
+.~lock.*#
