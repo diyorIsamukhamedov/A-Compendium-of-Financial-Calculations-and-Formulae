@@ -113,6 +113,7 @@ jupyter notebook
 Затем открыть `1_growth_rate/4_notebooks/growth_rate_analysis.ipynb`.
 
 Then open `1_growth_rate/4_notebooks/growth_rate_analysis.ipynb`.
+![growth rate by portfolio component](./docs/growth_rate.png)
 
 ## Пример / Example
 
