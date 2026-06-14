@@ -1,9 +1,10 @@
 """
 Generate a synthetic asset ledger for the ROA / ROE topic
 
-The ledger holds granual asset-level records whose amounts sum,
-per reporting date, to the total Assets figure from the handwritten text (the invariant)
-noise is injected afterwards so the ETL pipline has a visible assertable effect. 
+This module builds a reproducible 300,000-row asset ledger, embeds a real
+relationship between the features and the amount, enforces the per-date total
+assets invariant on the clean data, injects a controlled noise typology and
+writes the resulting messy ledger to a CSV file for the ETL stage.
 """
 
 # Configuration
