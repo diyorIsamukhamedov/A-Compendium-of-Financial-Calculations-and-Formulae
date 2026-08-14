@@ -11,6 +11,7 @@ CREATE SCHEMA IF NOT EXISTS roa_roe;
 	The order is chosen carefully to avoid foreign key dependency issues.
 */
 DROP TABLE IF EXISTS roa_roe.assets;
+DROP TABLE IF EXISTS roa_roe.equity_income;
 
 CREATE TABLE roa_roe.assets (
 	asset_id INTEGER PRIMARY KEY,													
@@ -22,3 +23,11 @@ CREATE TABLE roa_roe.assets (
 	amount NUMERIC(18, 6) NOT NULL													-- 6 decimals, matches MONEY_SCALE_DP
 );
 -- ================================================================================
+
+CREATE TABLE roa_roe.equity_income (
+	report_date VARCHAR(7) PRIMARY KEY CHECK (report_date ~ '^\d{4}-Q[1-4]$'),
+	assets_begin NUMERIC(18, 6) NOT NULL CHECK (assets_begin > 0),		-- assets at the start of the quarter
+	equity_begin NUMERIC(18, 6) NOT NULL CHECK (equity_begin > 0),		-- 2024-Q4 fixed by my konspekt: 1420
+	equity_end NUMERIC(18, 6) NOT NULL CHECK (equity_end > 0),			-- 2024-Q4 fixed by my konspekt: 1580
+	net_income_quarter NUMERIC(18, 6) NOT NULL							-- 2024-Q4 fixed by my konspekt: 60
+);
