@@ -94,4 +94,4 @@ Developed by [Diyor Isamukhamedov](https://github.com/diyorIsamukhamedov/)
 - **Markdown**
 ### Автор
  
-Разработал [Diyor Isamukhamedov](https://github.com/diyorIsamukhamedov/)
+Разработал и разрабатывает [Diyor Isamukhamedov](https://github.com/diyorIsamukhamedov/)
