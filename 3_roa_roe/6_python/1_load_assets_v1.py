@@ -13,8 +13,14 @@ load_dotenv()
 SCHEMA_SQL_PATH: str = str(Path(__file__).resolve().parent.parent / "5_PostgreSQL" / "1_ddl.sql")
 CLEAN_CSV_PATH: str = str(Path(__file__).resolve().parent.parent / "data" / "2_assets_clean_v1.csv")
 
-# I copy into the schema-qualified table, because my table is not in public
-COPY_SQL: str = "COPY roa_roe.assets FROM STDIN WITH (FORMAT csv, HEADER true)"
+EQUITY_CSV_PATH: str = str(Path(__file__).resolve().parent.parent / "data" / "3_equity_income_v1.csv")
+
+# I keep one COPY statement per table
+COPY_ASSETS_SQL: str = "COPY roa_roe.assets FROM STDIN WITH (FORMAT csv, HEADER true)"
+COPY_EQUITY_SQL: str = "COPY roa_roe.equity_income FROM STDIN WITH (FORMAT csv, HEADER true)"
+
+# I expect one row per quarter in my equity table
+EXPECTED_EQUITY_ROWS: int = 6
 
 # I expect exactly this many rows after the load
 EXPECTED_ROW_COUNT: int = 300_000
@@ -63,22 +69,21 @@ def create_table(conn: Connection, schema_sql_path: str) -> None:
     conn.commit()  # Commit changes to the database
 
 
-def load_csv(conn: Connection, csv_path: str) -> None:
-    """Bulk-load my clean CSV into the assets table with COPY."""
+def load_csv(conn: Connection, csv_path: str, copy_sql: str) -> None:
+    """Bulk-load a CSV into a table with the given COPY statement."""
     # I open the CSV in text read mode and stream it straight into COPY
     with open(csv_path, mode="r", encoding="utf-8", newline="") as file:
         with conn.cursor() as cur:
-            cur.copy_expert(COPY_SQL, file)
+            cur.copy_expert(copy_sql, file)
 
     conn.commit()
 
 
-def count_rows(conn: Connection) -> int:
-    """Return how many rows landed in my assets table."""
+def count_rows(conn: Connection, table_name: str) -> int:
+    """Return how many rows landed in the given table."""
     with conn.cursor() as cur:
-        query = """
-        SELECT COUNT(*) FROM roa_roe.assets;
-        """
+        # the table name comes from my own constants, never from outside input
+        query = f"SELECT COUNT(*) FROM {table_name};"
         cur.execute(query)
         result = cur.fetchone()
         row_count = result[0] if result else 0
@@ -106,15 +111,18 @@ def check_totals(conn: Connection) -> None:
 
 
 def main() -> None:
-    """Create the table, load the clean ledger and verify the result."""
+    """Create the tables, load both CSVs and verify the result."""
     conn = connect()
     if conn is None:
         # I stop here, there is nothing to load into
         return
 
     create_table(conn, SCHEMA_SQL_PATH)
-    load_csv(conn, CLEAN_CSV_PATH)
-    print(count_rows(conn))  # I expect EXPECTED_ROW_COUNT
+    load_csv(conn, CLEAN_CSV_PATH, COPY_ASSETS_SQL)
+    load_csv(conn, EQUITY_CSV_PATH, COPY_EQUITY_SQL)
+
+    print("assets rows :", count_rows(conn, "roa_roe.assets"))         # I expect EXPECTED_ROW_COUNT
+    print("equity_income rows :", count_rows(conn, "roa_roe.equity_income"))  # I expect EXPECTED_EQUITY_ROWS
     check_totals(conn)
     conn.close()
 
