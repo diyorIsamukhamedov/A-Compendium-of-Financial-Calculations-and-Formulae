@@ -1,4 +1,4 @@
-"""Synthetic asset ledger generator for the 3_roa_roe topic."""
+"""Synthetic asset ledger generator"""
 
 from typing import Optional
 from pathlib import Path
