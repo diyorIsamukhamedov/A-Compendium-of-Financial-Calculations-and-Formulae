@@ -17,7 +17,7 @@ HEADER_RENAME: dict[str,str] = {
     "Report Date": "report_date",
     "Asset Type": "asset_type",
     "Currency": "currency",
-    "Term Month": "term_month",
+    "Term Months": "term_months",
     "Interest Rate": "interest_rate",
     "Amount": "amount"
 }
