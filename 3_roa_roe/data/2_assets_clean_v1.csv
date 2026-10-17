@@ -1,4 +1,4 @@
-asset_id,report_date,asset_type,currency,Term Months,interest_rate,amount
+asset_id,report_date,asset_type,currency,term_months,interest_rate,amount
 1,2024-Q1,loan,eur,11,22.9,0.16327
 2,2024-Q1,cash,eur,93,23.77,0.150039
 3,2024-Q1,loan,eur,79,20.0,0.203448
