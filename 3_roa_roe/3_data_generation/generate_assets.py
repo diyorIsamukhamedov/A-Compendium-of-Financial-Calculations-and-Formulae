@@ -110,7 +110,7 @@ MESSY_HEADERS: dict[str, str] = {
 # I build the path from this file's own location, so it works no matter which
 # folder I launch python from. This file sits in 3_data_generation, and I want
 # the CSV one level up, in 3_roa_roe/data.
-OUTPUT_CSV_PATH: str = str(Path(__file__).resolve().parent.parent / "data" / "assets_messy.csv")
+OUTPUT_CSV_PATH: str = str(Path(__file__).resolve().parent.parent / "data" / "1_assets_messy_v1.csv")
 
 
 # dataset generation
